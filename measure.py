@@ -7,7 +7,6 @@ from OpenFacePytorch.loadOpenFace import prepareOpenFace
 
 imgDim = 96
 NEW = True
-
 import cv2, numpy
 
 def ReadImage(pathname):
