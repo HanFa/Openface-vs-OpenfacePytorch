@@ -10,7 +10,7 @@ def cdf(array):
     num_bins = len(array)
     counts, bin_edges = np.histogram(array, bins=num_bins, normed=True)
     cdf = np.cumsum(counts) / sum(counts)
-    return bin_edges[1:], cdf
+    return bin_edges[:-1], cdf
 
 
 if __name__ == '__main__':
@@ -33,7 +33,6 @@ if __name__ == '__main__':
         x, y = cdf(array)
         plt.plot(x, y, label=labels[idx])
 
-    plt.xlim(0, 0.35)
+    plt.xlim(0)
     plt.legend()
     plt.savefig('results/cdf.png')
-    
