@@ -6,7 +6,7 @@ import torchfile
 from OpenFacePytorch.loadOpenFace import prepareOpenFace
 
 imgDim = 96
-NEW = False
+NEW = True
 
 import cv2, numpy
 
@@ -68,13 +68,14 @@ if __name__ == '__main__':
         else:
             rep = traditional_predict(os.path.join(dataset_path, img))
 
-        profiler.disable()
-        profiler.create_stats()
-
         with open(measurement_path, 'a') as f:
             delta = str(time.time() - tick)
             print("Elapse time: " + delta + '(s)')
             f.write(delta + '\n')
+
+        profiler.disable()
+        profiler.create_stats()
+        profiler.dump_stats(os.path.join(result_path, '{}.pyprof'.format(idx)))
 
         with open(rep_path, 'a') as f:
             f.write(str(rep) + '\n')
