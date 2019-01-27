@@ -6,7 +6,7 @@ import torchfile
 from OpenFacePytorch.loadOpenFace import prepareOpenFace
 
 imgDim = 96
-NEW = True
+NEW = False
 
 import cv2, numpy
 
